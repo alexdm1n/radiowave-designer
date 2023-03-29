@@ -4,6 +4,7 @@ public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddControllersWithViews();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -20,11 +21,10 @@ public class Startup
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
-        app.UseCookiePolicy();
         app.UseRouting();
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+            endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}");
         });
     }
 }
