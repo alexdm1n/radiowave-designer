@@ -1,5 +1,5 @@
 function init() {
-    var myPlacemark,
+    var placemark,
         map = new ymaps.Map('maps', {
             center: [55.753994, 37.622093],
             zoom: 9
@@ -8,15 +8,14 @@ function init() {
         });
 
     map.events.add('click', function (e) {
-        var coords = e.get('coords');
-        
-        if (myPlacemark) {
-            map.geoObjects.remove(myPlacemark);
-            myPlacemark = createPlacemark(coords);
-            map.geoObjects.add(myPlacemark);
+        const coords = e.get('coords');
+        if(placemark) {
+            map.geoObjects.remove(placemark);
+            placemark = createPlacemark(coords);
+            map.geoObjects.add(placemark);
         } else {
-            myPlacemark = createPlacemark(coords);
-            map.geoObjects.add(myPlacemark);
+            placemark = createPlacemark(coords);
+            map.geoObjects.add(placemark);
         }
     });
 }
