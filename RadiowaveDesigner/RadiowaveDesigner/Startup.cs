@@ -4,7 +4,7 @@ public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllersWithViews();
+        services.AddRadiowaveDesignerModule();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -20,6 +20,7 @@ public class Startup
         }
 
         app.UseHttpsRedirection();
+        app.UseStaticFiles();
         app.UseStaticFiles();
         app.UseRouting();
         app.UseEndpoints(endpoints =>
