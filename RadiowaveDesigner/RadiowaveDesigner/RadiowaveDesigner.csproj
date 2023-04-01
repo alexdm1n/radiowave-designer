@@ -14,4 +14,8 @@
       <None Include="wwwroot\js\ymaps.js" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>

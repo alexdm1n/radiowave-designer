@@ -1,10 +1,14 @@
-﻿namespace RadiowaveDesigner;
+﻿using RadiowaveDesigner.Infrastructure;
+using RadiowaveDesigner.Settings;
+
+namespace RadiowaveDesigner;
 
 public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddRadiowaveDesignerModule();
+        services.RegisterSettings<YandexApiSettings>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
