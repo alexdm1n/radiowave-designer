@@ -5,16 +5,16 @@ namespace RadiowaveDesigner.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly IHomeService _homeService;
+    private readonly IHomeViewModelBuilder _homeViewModelBuilder;
 
-    public HomeController(IHomeService homeService)
+    public HomeController(IHomeViewModelBuilder homeViewModelBuilder)
     {
-        _homeService = homeService;
+        _homeViewModelBuilder = homeViewModelBuilder;
     }
 
     public async Task<IActionResult> Index()
     {
-        var homeView = _homeService.Get();
+        var homeView = _homeViewModelBuilder.Get();
         return View(homeView);
     }
 }

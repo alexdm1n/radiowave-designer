@@ -4,11 +4,11 @@ using RadiowaveDesigner.ViewModels;
 
 namespace RadiowaveDesigner.Services;
 
-internal class HomeService : IHomeService
+internal class HomeViewModelBuilder : IHomeViewModelBuilder
 {
     private readonly YandexApiSettings _yandexApiSettings;
 
-    public HomeService(IOptions<YandexApiSettings> yandexApiSettings)
+    public HomeViewModelBuilder(IOptions<YandexApiSettings> yandexApiSettings)
     {
         _yandexApiSettings = yandexApiSettings.Value;
     }

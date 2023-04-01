@@ -8,6 +8,6 @@ public static class RadiowaveDesignerModule
     {
         services.AddControllersWithViews();
 
-        services.AddTransient<IHomeService, HomeService>();
+        services.AddTransient<IHomeViewModelBuilder, HomeViewModelBuilder>();
     }
 }

@@ -2,7 +2,7 @@
 
 namespace RadiowaveDesigner.Services;
 
-public interface IHomeService
+public interface IHomeViewModelBuilder
 {
     HomeViewModel Get();
 }
