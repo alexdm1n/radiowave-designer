@@ -1,8 +1,21 @@
-﻿@model dynamic
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model RadiowaveDesigner.ViewModels.HomeViewModel
 
 @{
     ViewBag.Title = "Home";
     Layout = "_Layout";
 }
 
-<h2>title</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="/Styles/StyleSheet.css" />
+</head>
+<body>
+    <div id="maps" class="ymap"></div>
+    <script src="https://api-maps.yandex.ru/2.1/?apiKey=@Model.ApiKey&lang=en_GB">
+    </script>
+    <script src="js/ymaps.js"></script>
+</body>
+</html>

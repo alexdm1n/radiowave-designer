@@ -18,3 +18,9 @@
     cursor: inherit;
     display: block;
 }
+
+.ymap {
+    width: 100%;
+    height: 675px;
+    background-color: #1b1e21;
+}

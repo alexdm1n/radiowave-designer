@@ -10,4 +10,16 @@
       <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="wwwroot\js\ymaps.js" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Services\Builders" />
+    </ItemGroup>
+
 </Project>
