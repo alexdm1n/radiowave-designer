@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadiowaveDesigner", "Radiow
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{1A163AAF-0F5D-4E92-975C-6DB5C5E16B57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{BDF9D9E1-9CD7-4C1F-8FB7-CF0EA5FEE8CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{1A163AAF-0F5D-4E92-975C-6DB5C5E16B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A163AAF-0F5D-4E92-975C-6DB5C5E16B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A163AAF-0F5D-4E92-975C-6DB5C5E16B57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDF9D9E1-9CD7-4C1F-8FB7-CF0EA5FEE8CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDF9D9E1-9CD7-4C1F-8FB7-CF0EA5FEE8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDF9D9E1-9CD7-4C1F-8FB7-CF0EA5FEE8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDF9D9E1-9CD7-4C1F-8FB7-CF0EA5FEE8CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
