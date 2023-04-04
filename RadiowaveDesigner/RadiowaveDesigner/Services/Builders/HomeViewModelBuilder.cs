@@ -31,7 +31,6 @@ internal class HomeViewModelBuilder : IHomeViewModelBuilder
 
     private string GetCoordinatesJson(IEnumerable<CoordinatesModel> coordinates)
     {
-        var json = JsonSerializer.Serialize(coordinates);
         return JsonSerializer.Serialize(coordinates);
     }
 }

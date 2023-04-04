@@ -48,8 +48,8 @@ function createCircleArea(latitude, longitude, radius) {
         hintContent: `ropagation range - ${radius}`
     }, {
         draggable: false,
-        fillColor: "#DB709377",
-        strokeColor: "#990066",
+        fillColor: "#13FA5977",
+        strokeColor: "#07842D",
         strokeOpacity: 0.8,
         strokeWidth: 2
     });
