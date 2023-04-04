@@ -1,6 +1,6 @@
 ﻿namespace RadiowaveDesigner.Models.Models;
 
-public class Coordinates
+public class CoordinatesConfiguration
 {
     public string Value { get; set; }
 }

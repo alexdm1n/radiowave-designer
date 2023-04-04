@@ -1,6 +1,6 @@
 ﻿using RadiowaveDesigner.ViewModels;
 
-namespace RadiowaveDesigner.Services;
+namespace RadiowaveDesigner.Services.Builders;
 
 public interface IHomeViewModelBuilder
 {

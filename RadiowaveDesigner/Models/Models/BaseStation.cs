@@ -1,6 +1,6 @@
 ﻿namespace RadiowaveDesigner.Models.Models;
 
-public class BaseStation
+public class BaseStationConfiguration
 {
     public int FrequencyInHz { get; set; }
     
