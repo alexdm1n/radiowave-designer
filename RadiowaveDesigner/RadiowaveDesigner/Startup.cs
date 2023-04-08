@@ -1,13 +1,22 @@
-﻿using RadiowaveDesigner.Infrastructure;
+﻿using DataAccessLayer;
+using RadiowaveDesigner.Infrastructure;
 using RadiowaveDesigner.Settings;
 
 namespace RadiowaveDesigner;
 
 public class Startup
 {
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    private IConfiguration Configuration { get; }
+
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddRadiowaveDesignerModule();
+        services.AddDataAccessLayerModule(Configuration);
         services.RegisterSettings<YandexApiSettings>();
     }
 
