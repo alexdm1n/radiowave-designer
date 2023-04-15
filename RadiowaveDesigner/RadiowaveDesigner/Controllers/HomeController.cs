@@ -14,7 +14,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var homeView = _homeViewModelBuilder.Get();
+        var homeView =  await _homeViewModelBuilder.Get();
         return View(homeView);
     }
 }

@@ -3,7 +3,6 @@ using DataAccessLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RadiowaveDesigner.Models.Models;
 
 namespace DataAccessLayer;
 
@@ -15,7 +14,7 @@ public static class DataAccessLayerModule
         services
             .AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Transient);
 
-        services.AddTransient<IRepository<BaseStationConfiguration>, BaseStationRepository>();
-        services.AddTransient<IRepository<CoordinatesConfiguration>, CoordinatesRepository>();
+        services.AddTransient<IBaseStationRepository, BaseStationRepository>();
+        services.AddTransient<ICoordinatesRepository, CoordinatesRepository>();
     }
 }

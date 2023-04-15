@@ -1,41 +1,32 @@
 ﻿using DataAccessLayer.Context;
+using Microsoft.EntityFrameworkCore;
 using RadiowaveDesigner.Models.Models;
 
 namespace DataAccessLayer.Repositories;
 
-public class BaseStationRepository : BaseRepository<BaseStationConfiguration>
+internal class BaseStationRepository : IBaseStationRepository
 {
-    public BaseStationRepository(AppDbContext context) : base(context)
+    private readonly AppDbContext _context;
+
+    public BaseStationRepository(AppDbContext context)
     {
+        this._context = context;
     }
 
-    public override BaseStationConfiguration Get(long entityId)
+    public async Task<BaseStationConfiguration?> Get()
     {
-        throw new NotImplementedException();
+        return await _context.BaseStationConfiguration.SingleOrDefaultAsync();
     }
 
-    public override IEnumerable<BaseStationConfiguration> GetAll()
+    public async Task Update(BaseStationConfiguration configuration)
     {
-        throw new NotImplementedException();
+        _context.Update(configuration);
+        await _context.SaveChangesAsync();
     }
 
-    public override void Update(BaseStationConfiguration entity)
+    public async Task Create(BaseStationConfiguration configuration)
     {
-        throw new NotImplementedException();
-    }
-
-    public override void Create(BaseStationConfiguration entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void Delete(BaseStationConfiguration entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void Delete(long id)
-    {
-        throw new NotImplementedException();
+        await _context.BaseStationConfiguration.AddAsync(configuration);
+        await _context.SaveChangesAsync();
     }
 }

@@ -1,41 +1,33 @@
 ﻿using DataAccessLayer.Context;
+using Microsoft.EntityFrameworkCore;
 using RadiowaveDesigner.Models.Models;
 
 namespace DataAccessLayer.Repositories;
 
-public class CoordinatesRepository : BaseRepository<CoordinatesConfiguration>
+internal class CoordinatesRepository : ICoordinatesRepository
 {
-    public CoordinatesRepository(AppDbContext context) : base(context)
+    private readonly AppDbContext _context;
+
+    public CoordinatesRepository(AppDbContext context)
     {
+        _context = context;
     }
 
-    public override CoordinatesConfiguration Get(long entityId)
+    public async Task<IEnumerable<CoordinatesConfiguration>> GetAll()
     {
-        throw new NotImplementedException();
+        return await _context.CoordinatesConfigurations.ToListAsync();
     }
 
-    public override IEnumerable<CoordinatesConfiguration> GetAll()
+    public async Task Add(CoordinatesConfiguration coordinatesConfiguration)
     {
-        throw new NotImplementedException();
+        await _context.CoordinatesConfigurations.AddAsync(coordinatesConfiguration);
+        await _context.SaveChangesAsync();
     }
 
-    public override void Update(CoordinatesConfiguration entity)
+    public async Task Delete(long id)
     {
-        throw new NotImplementedException();
-    }
-
-    public override void Create(CoordinatesConfiguration entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void Delete(CoordinatesConfiguration entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void Delete(long id)
-    {
-        throw new NotImplementedException();
+        _context.CoordinatesConfigurations.Remove(
+            (await _context.CoordinatesConfigurations.SingleOrDefaultAsync(c => c.Id == id))!);
+        await _context.SaveChangesAsync();
     }
 }
