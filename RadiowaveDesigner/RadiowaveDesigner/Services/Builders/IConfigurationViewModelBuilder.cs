@@ -2,7 +2,7 @@
 
 namespace RadiowaveDesigner.Services.Builders;
 
-public interface IHomeViewModelBuilder
+public interface IConfigurationViewModelBuilder
 {
-    Task<HomeViewModel> Get();
+    Task<ConfigurationViewModel> Build();
 }
