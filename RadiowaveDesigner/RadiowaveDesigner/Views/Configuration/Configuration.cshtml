@@ -48,7 +48,13 @@
             <tr>
                 <td>@coord.Value</td>
                 <td>
-                    <a asp-controller="Configuration" asp-action="DeleteCoordinates" asp-route-id="@coord.Id" class="btn btn-sm btn-danger">Delete</a>
+                    <a
+                        asp-controller="Configuration"
+                        asp-action="DeleteCoordinates"
+                        asp-route-id="@coord.Id"
+                        class="btn btn-sm btn-danger">
+                            Delete
+                    </a>
                 </td>
             </tr>
         }
