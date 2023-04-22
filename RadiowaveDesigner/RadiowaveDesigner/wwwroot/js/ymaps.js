@@ -1,5 +1,4 @@
-const coordinates = document.getElementById("coordinates").value;
-const propagationRange = document.getElementById("propagationRange").value;
+const baseStations = document.getElementById("baseStations").value;
 
 function init() {
     var placemark,
@@ -22,9 +21,10 @@ function init() {
         }
     });
     
-    const coordinatesArray = JSON.parse(coordinates);
-    coordinatesArray.forEach((element) => {
-        var area = createCircleArea(element.Latitude, element.Longitude, propagationRange);
+    const baseStationsArray = JSON.parse(baseStations);
+    baseStationsArray.forEach((element) => {
+        console.log(element);
+        var area = createCircleArea(element.Coordinates.Latitude, element.Coordinates.Longitude, element.PropagationRange);
         map.geoObjects.add(area);
       });
 }
@@ -45,7 +45,7 @@ function createCircleArea(latitude, longitude, radius) {
         [latitude, longitude],
         radius
     ], {
-        hintContent: `ropagation range - ${radius}`
+        hintContent: `Propagation range - ${radius} m`
     }, {
         draggable: false,
         fillColor: "#13FA5977",

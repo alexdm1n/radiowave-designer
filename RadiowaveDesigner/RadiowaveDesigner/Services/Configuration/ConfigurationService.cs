@@ -6,51 +6,30 @@ namespace RadiowaveDesigner.Services.Configuration;
 internal class ConfigurationService : IConfigurationService
 {
     private readonly IBaseStationRepository _baseStationRepository;
-    private readonly ICoordinatesRepository _coordinatesRepository;
 
     public ConfigurationService(
-        IBaseStationRepository baseStationRepository,
-        ICoordinatesRepository coordinatesRepository)
+        IBaseStationRepository baseStationRepository)
     {
         _baseStationRepository = baseStationRepository;
-        _coordinatesRepository = coordinatesRepository;
     }
 
-    public async Task UpdateBaseStationConfig(BaseStationConfiguration configuration)
+    public async Task<IEnumerable<BaseStationConfiguration?>> GetAll()
     {
-        var currentConfig = await GetBaseStationConfig();
-        if (currentConfig == null)
-        {
-            await _baseStationRepository.Create(configuration);
-            return;
-        }
-
-        currentConfig.Height = configuration.Height;
-        currentConfig.FrequencyInHz = configuration.FrequencyInHz;
-
-        await _baseStationRepository.Update(currentConfig);
+        return await _baseStationRepository.GetAll();
     }
 
-    public async Task AddCoordinates(string coordinates)
+    public async Task Add(BaseStationConfiguration configuration)
     {
-        var coordsConfig = new CoordinatesConfiguration()
-        {
-            Value = coordinates,
-        };
-        await _coordinatesRepository.Add(coordsConfig);
-    }
-    public async Task<IEnumerable<CoordinatesConfiguration>> GetCoordinates()
-    {
-        return await _coordinatesRepository.GetAll();
+        await _baseStationRepository.Create(configuration);
     }
 
-    public async Task DeleteCoordinates(long id)
+    public async Task Delete(long id)
     {
-        await _coordinatesRepository.Delete(id);
+        await _baseStationRepository.Delete(id);
     }
 
-    public async Task<BaseStationConfiguration?> GetBaseStationConfig()
+    public async Task<BaseStationConfiguration?> GetBaseStationConfig(long id)
     {
-        return await _baseStationRepository.Get();
+        return await _baseStationRepository.Get(id);
     }
 }

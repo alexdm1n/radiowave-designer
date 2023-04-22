@@ -1,7 +1,7 @@
 ﻿using RadiowaveDesigner.Services.Builders;
 using RadiowaveDesigner.Services.Calculations;
 using RadiowaveDesigner.Services.Configuration;
-using RadiowaveDesigner.Services.Home;
+using RadiowaveDesigner.Services.Mappings;
 
 namespace RadiowaveDesigner;
 
@@ -15,7 +15,7 @@ public static class RadiowaveDesignerModule
         services.AddTransient<IConfigurationViewModelBuilder, ConfigurationViewModelBuilder>();
 
         services.AddTransient<IConfigurationService, ConfigurationService>();
-        services.AddTransient<IHomeService, HomeService>();
         services.AddTransient<IPropagationRangeCalculator, PropagationRangeCalculator>();
+        services.AddTransient<IBaseStationViewModelMapper, BaseStationViewModelMapper>();
     }
 }

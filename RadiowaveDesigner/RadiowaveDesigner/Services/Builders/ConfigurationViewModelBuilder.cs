@@ -15,13 +15,10 @@ internal class ConfigurationViewModelBuilder : IConfigurationViewModelBuilder
 
     public async Task<ConfigurationViewModel> Build()
     {
-        var config = await _configurationService.GetBaseStationConfig();
-        var coordinates = await _configurationService.GetCoordinates();
-        
+        var configs = await _configurationService.GetAll();
         var viewModel = new ConfigurationViewModel()
         {
-           BaseStationConfiguration = BuildBaseStationConfig(config),
-           CoordinatesConfigurations = coordinates,
+           BaseStationConfiguration = configs.Select(BuildBaseStationConfig),
         };
 
         return viewModel;
@@ -38,6 +35,7 @@ internal class ConfigurationViewModelBuilder : IConfigurationViewModelBuilder
         {
             FrequencyInHz = 0,
             Height = 0,
+            Coordinates = null,
         };
     }
 }

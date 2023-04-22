@@ -1,6 +1,8 @@
-﻿namespace RadiowaveDesigner.Services.Calculations;
+﻿using RadiowaveDesigner.Models.Models;
+
+namespace RadiowaveDesigner.Services.Calculations;
 
 internal interface IPropagationRangeCalculator
 {
-    Task<int?> Calculate();
+    int? Calculate(BaseStationConfiguration config);
 }

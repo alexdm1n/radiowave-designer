@@ -16,8 +16,7 @@
     <div id="maps" class="ymap"></div>
     <script src="https://api-maps.yandex.ru/2.1/?apiKey=@Model.ApiKey&lang=en_GB">
     </script>
-    <input type="hidden" id="coordinates" value="@Model.CoordinatesJson" />
-    <input type="hidden" id="propagationRange" value="@Model.PropagationRange" />
-    <script src="js/ymaps.js" type="text/javascript"></script>
+    <input type="hidden" id="baseStations" value="@Model.BaseStationViewModelsJson" />
+<script src="js/ymaps.js" type="text/javascript"></script>
 </body>
 </html>
