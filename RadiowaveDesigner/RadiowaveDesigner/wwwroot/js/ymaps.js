@@ -24,8 +24,10 @@ function init() {
     const baseStationsArray = JSON.parse(baseStations);
     baseStationsArray.forEach((element) => {
         console.log(element);
-        var area = createCircleArea(element.Coordinates.Latitude, element.Coordinates.Longitude, element.PropagationRange);
+        const area = createCircleArea(element.Coordinates.Latitude, element.Coordinates.Longitude, element.PropagationRange);
         map.geoObjects.add(area);
+        const placemark = createBaseStationPlacemark(element.Coordinates.Latitude, element.Coordinates.Longitude);
+        map.geoObjects.add(placemark);
       });
 }
 
@@ -37,6 +39,15 @@ function createPlacemark(coords) {
         preset: 'islands#nightStretchyIcon',
         draggable: false,
         hasBalloon: true
+    });
+}
+
+function createBaseStationPlacemark(latitude, longitude) {
+    return new ymaps.Placemark([latitude, longitude], {
+        balloonContent: `${latitude},${longitude}`
+    }, {
+        preset: 'islands#circleIcon',
+        iconColor: '#3caa3c'
     });
 }
 
