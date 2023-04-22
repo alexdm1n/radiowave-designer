@@ -11,7 +11,7 @@
 <head>
     <title>Configuration</title>
     <link rel="stylesheet" href="/Styles/StyleSheet.css" />
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <style>
         body {
             background-image: url('https://example.com/background.jpg');
@@ -23,62 +23,60 @@
     </style>
 </head>
 <body>
-<div class="container mt-4">
-    <h1>Base Station Config</h1>
-    <form>
-        <div class="form-group">
-            <label for="frequency">Frequency (Hz):</label>
-            <input type="number" class="form-control" id="frequency" name="FrequencyInHz" placeholder="Enter frequency" 
-                   value="@Model.BaseStationConfiguration.FrequencyInHz" />
+<h1 class="text-center">Configuration</h1>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Frequency (Hz)</th>
+                        <th>Height</th>
+                        <th>Coordinates</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var config in Model.BaseStationConfiguration)
+                    {
+                        <tr>
+                            <td>@config.FrequencyInHz</td>
+                            <td>@config.Height</td>
+                            <td>@config.Coordinates</td>
+                            <td>
+                                <form method="post" asp-controller="Configuration" asp-action="Delete" asp-route-id="@config.Id">
+                                    <input type="submit" value="Delete" class="btn btn-danger" />
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
-        <div class="form-group">
-            <label for="height">Height (m):</label>
-            <input type="number" class="form-control" id="height" name="Height" placeholder="Enter height"
-                   value="@Model.BaseStationConfiguration.Height" />
-        </div>
-        <button type="submit" class="btn btn-primary" asp-action="UpdateBaseStationConfig">Save</button>
-    </form>
-</div>
-<div class="container mt-4">
-    <h2>Coordinates Configurations</h2>
-    <table class="table">
-        <tbody>
-        @foreach (var coord in Model.CoordinatesConfigurations)
-        {
-            <tr>
-                <td>@coord.Value</td>
-                <td>
-                    <a
-                        asp-controller="Configuration"
-                        asp-action="DeleteCoordinates"
-                        asp-route-id="@coord.Id"
-                        class="btn btn-sm btn-danger">
-                            Delete
-                    </a>
-                </td>
-            </tr>
-        }
-        <tr>
-            <form class="form-inline" asp-action="AddCoordinates" asp-controller="Configuration">
-                <div class="input-group mb4">
-                    <td>
-                        <input type="text"
-                               class="form-control"
-                               id="coordinates"
-                               name="coordinates"
-                               placeholder="Enter new value in format Latitude, Longitude"
-                        /> 
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-sm btn-success" id="coordinatesValue">
-                            Save
-                        </button>
-                    </td>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center mb-3">Add New Configuration</h2>
+            <form method="post" asp-controller="Configuration" asp-action="Add">
+                <div class="form-group">
+                    <label for="frequency">Frequency (Hz):</label>
+                    <input type="number" class="form-control" id="frequency" name="baseStationConfiguration.FrequencyInHz" />
+                </div>
+                <div class="form-group">
+                    <label for="height">Height:</label>
+                    <input type="number" class="form-control" id="height" name="baseStationConfiguration.Height" />
+                </div>
+                <div class="form-group">
+                    <label for="coordinates">Coordinates:</label>
+                    <input type="text" class="form-control" id="coordinates" name="baseStationConfiguration.Coordinates" />
+                </div>
+                <div class="text-center">
+                    <input type="submit" value="Add" class="btn btn-primary" />
                 </div>
             </form>
-        </tr>
-        </tbody>
-    </table>
+        </div>
+    </div>
 </div>
 </body>
 </html>

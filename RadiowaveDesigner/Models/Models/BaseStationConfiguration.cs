@@ -7,4 +7,6 @@ public class BaseStationConfiguration
     public int FrequencyInHz { get; set; }
     
     public int Height { get; set; }
+    
+    public string Coordinates { get; set; }
 }

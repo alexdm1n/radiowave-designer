@@ -1,9 +1,7 @@
 ﻿using System.Text.Json;
 using Microsoft.Extensions.Options;
-using RadiowaveDesigner.Models;
-using RadiowaveDesigner.Services.Calculations;
 using RadiowaveDesigner.Services.Configuration;
-using RadiowaveDesigner.Services.Home;
+using RadiowaveDesigner.Services.Mappings;
 using RadiowaveDesigner.Settings;
 using RadiowaveDesigner.ViewModels;
 
@@ -12,33 +10,32 @@ namespace RadiowaveDesigner.Services.Builders;
 internal class HomeViewModelBuilder : IHomeViewModelBuilder
 {
     private readonly YandexApiSettings _yandexApiSettings;
-    private readonly IPropagationRangeCalculator _propagationRangeCalculator;
-    private readonly IHomeService _homeService;
+    private readonly IBaseStationViewModelMapper _baseStationViewModelMapper;
+    private readonly IConfigurationService _configurationService;
 
     public HomeViewModelBuilder(
         IOptions<YandexApiSettings> yandexApiSettings,
-        IPropagationRangeCalculator propagationRangeCalculator,
-        IHomeService homeService)
+        IConfigurationService configurationService,
+        IBaseStationViewModelMapper baseStationViewModelMapper)
     {
-        _propagationRangeCalculator = propagationRangeCalculator;
-        _homeService = homeService;
+        _configurationService = configurationService;
+        _baseStationViewModelMapper = baseStationViewModelMapper;
         _yandexApiSettings = yandexApiSettings.Value;
     }
 
     public async Task<HomeViewModel> Get()
     {
-        var propagationRange = await _propagationRangeCalculator.Calculate();
-        var coordinates = await _homeService.GetCoordinates();
+        var configs = await _configurationService.GetAll();
+        var configViewModels = configs.Select(c => _baseStationViewModelMapper.Map(c!));
         return new()
         {
             ApiKey = _yandexApiSettings.ApiKey,
-            PropagationRange = propagationRange,
-            CoordinatesJson = coordinates == null ? null : GetCoordinatesJson(coordinates),
+            BaseStationViewModelsJson = Serialize(configViewModels),
         };
     }
 
-    private string? GetCoordinatesJson(IEnumerable<CoordinatesModel> coordinates)
+    private string Serialize(IEnumerable<BaseStationViewModel> viewModels)
     {
-        return JsonSerializer.Serialize(coordinates);
+        return JsonSerializer.Serialize(viewModels);
     }
 }

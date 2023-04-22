@@ -4,13 +4,11 @@ namespace RadiowaveDesigner.Services.Configuration;
 
 public interface IConfigurationService
 {
-    Task UpdateBaseStationConfig(BaseStationConfiguration configuration);
+    Task Add(BaseStationConfiguration configuration);
 
-    Task<BaseStationConfiguration?> GetBaseStationConfig();
+    Task<BaseStationConfiguration?> GetBaseStationConfig(long id);
 
-    Task<IEnumerable<CoordinatesConfiguration>> GetCoordinates();
+    Task<IEnumerable<BaseStationConfiguration?>> GetAll();
 
-    Task AddCoordinates(string coordinates);
-
-    Task DeleteCoordinates(long id);
+    Task Delete(long id);
 }

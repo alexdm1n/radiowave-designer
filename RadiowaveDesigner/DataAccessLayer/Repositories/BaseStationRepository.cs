@@ -13,20 +13,26 @@ internal class BaseStationRepository : IBaseStationRepository
         this._context = context;
     }
 
-    public async Task<BaseStationConfiguration?> Get()
+    public async Task<IEnumerable<BaseStationConfiguration?>> GetAll()
     {
-        return await _context.BaseStationConfiguration.SingleOrDefaultAsync();
+        return await _context.BaseStationConfiguration.ToListAsync();
     }
 
-    public async Task Update(BaseStationConfiguration configuration)
+    public async Task<BaseStationConfiguration?> Get(long id)
     {
-        _context.Update(configuration);
-        await _context.SaveChangesAsync();
+        return await _context.BaseStationConfiguration.SingleOrDefaultAsync(c => c!.Id == id);
     }
 
     public async Task Create(BaseStationConfiguration configuration)
     {
         await _context.BaseStationConfiguration.AddAsync(configuration);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task Delete(long id)
+    {
+        var config = await _context.BaseStationConfiguration.SingleOrDefaultAsync(c => c!.Id == id);
+        _context.BaseStationConfiguration.Remove(config);
         await _context.SaveChangesAsync();
     }
 }

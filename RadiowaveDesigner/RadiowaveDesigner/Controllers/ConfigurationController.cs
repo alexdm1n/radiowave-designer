@@ -24,21 +24,15 @@ public class ConfigurationController : Controller
         return View(config);
     }
 
-    public async Task<IActionResult> UpdateBaseStationConfig(BaseStationConfiguration baseStationConfiguration)
+    public async Task<IActionResult> Add(BaseStationConfiguration baseStationConfiguration)
     {
-        await _configurationService.UpdateBaseStationConfig(baseStationConfiguration);
+        await _configurationService.Add(baseStationConfiguration);
         return RedirectToAction("Configuration", "Configuration");
     }
 
-    public async Task<IActionResult> AddCoordinates(string coordinates)
+    public async Task<IActionResult> Delete(int id)
     {
-        await _configurationService.AddCoordinates(coordinates);
-        return RedirectToAction("Configuration", "Configuration");
-    }
-
-    public async Task<IActionResult> DeleteCoordinates(int id)
-    {
-        await _configurationService.DeleteCoordinates(id);
+        await _configurationService.Delete(id);
         return RedirectToAction("Configuration", "Configuration");
     }
 }
