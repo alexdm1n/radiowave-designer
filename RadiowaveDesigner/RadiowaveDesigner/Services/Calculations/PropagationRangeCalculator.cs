@@ -11,6 +11,6 @@ internal class PropagationRangeCalculator : IPropagationRangeCalculator
             return null;
         }
 
-        return 20000;
+        return 200;
     }
 }
