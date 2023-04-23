@@ -41,7 +41,7 @@
                     @foreach (var config in Model.BaseStationConfiguration)
                     {
                         <tr>
-                            <td>@config.FrequencyInHz</td>
+                            <td>@config.FrequencyInMHz</td>
                             <td>@config.Height</td>
                             <td>@config.Coordinates</td>
                             <td>
@@ -60,11 +60,11 @@
             <h2 class="text-center mb-3">Add New Configuration</h2>
             <form method="post" asp-controller="Configuration" asp-action="Add">
                 <div class="form-group">
-                    <label for="frequency">Frequency (Hz):</label>
-                    <input type="number" class="form-control" id="frequency" name="baseStationConfiguration.FrequencyInHz" />
+                    <label for="frequency">Frequency (MHz):</label>
+                    <input type="number" class="form-control" id="frequency" name="baseStationConfiguration.FrequencyInMHz" />
                 </div>
                 <div class="form-group">
-                    <label for="height">Height:</label>
+                    <label for="height">Height (m):</label>
                     <input type="number" class="form-control" id="height" name="baseStationConfiguration.Height" />
                 </div>
                 <div class="form-group">

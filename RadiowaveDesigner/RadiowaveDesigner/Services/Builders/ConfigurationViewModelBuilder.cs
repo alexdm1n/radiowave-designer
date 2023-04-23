@@ -33,7 +33,7 @@ internal class ConfigurationViewModelBuilder : IConfigurationViewModelBuilder
 
         return new()
         {
-            FrequencyInHz = 0,
+            FrequencyInMHz = 0,
             Height = 0,
             Coordinates = null,
         };

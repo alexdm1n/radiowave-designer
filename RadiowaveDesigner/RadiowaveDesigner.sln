@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{5F23A7AF-5889-4169-BD5A-B110DC370291}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeling", "Modeling\Modeling.csproj", "{2C9D09C8-F72D-4E3D-BF79-49D88F294C87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{5F23A7AF-5889-4169-BD5A-B110DC370291}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F23A7AF-5889-4169-BD5A-B110DC370291}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F23A7AF-5889-4169-BD5A-B110DC370291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C9D09C8-F72D-4E3D-BF79-49D88F294C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C9D09C8-F72D-4E3D-BF79-49D88F294C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C9D09C8-F72D-4E3D-BF79-49D88F294C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C9D09C8-F72D-4E3D-BF79-49D88F294C87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
