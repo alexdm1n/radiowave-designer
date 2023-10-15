@@ -5,4 +5,6 @@ public class HomeViewModel
     public string ApiKey { get; set; }
 
     public string  BaseStationViewModelsJson { get; set; }
+    
+    public string AreaCoordinatesViewModelJson { get; set; }
 }

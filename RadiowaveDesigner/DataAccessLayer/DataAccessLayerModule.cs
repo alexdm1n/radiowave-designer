@@ -15,5 +15,6 @@ public static class DataAccessLayerModule
             .AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Transient);
 
         services.AddTransient<IBaseStationRepository, BaseStationRepository>();
+        services.AddTransient<IAreaRepository, AreaRepository>();
     }
 }

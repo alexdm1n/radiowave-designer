@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RadiowaveDesigner.Models.Models;
+using RadiowaveDesigner.Services.AreaConfiguration;
 using RadiowaveDesigner.Services.Builders;
 using RadiowaveDesigner.Services.Configuration;
 
@@ -9,13 +10,16 @@ public class ConfigurationController : Controller
 {
     private readonly IConfigurationViewModelBuilder _configurationViewModelBuilder;
     private readonly IConfigurationService _configurationService;
+    private readonly IAreaConfigurationService _areaConfigurationService;
 
     public ConfigurationController(
         IConfigurationViewModelBuilder configurationViewModelBuilder,
-        IConfigurationService configurationService)
+        IConfigurationService configurationService,
+        IAreaConfigurationService areaConfigurationService)
     {
         _configurationViewModelBuilder = configurationViewModelBuilder;
         _configurationService = configurationService;
+        _areaConfigurationService = areaConfigurationService;
     }
 
     public async Task<IActionResult> Configuration()
@@ -33,6 +37,12 @@ public class ConfigurationController : Controller
     public async Task<IActionResult> Delete(int id)
     {
         await _configurationService.Delete(id);
+        return RedirectToAction("Configuration", "Configuration");
+    }
+
+    public async Task<IActionResult> AddAreaConfig(string coordinatesString)
+    {
+        await _areaConfigurationService.Upsert(coordinatesString);
         return RedirectToAction("Configuration", "Configuration");
     }
 }
