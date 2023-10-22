@@ -1,4 +1,5 @@
-﻿using RadiowaveDesigner.Modeling;
+﻿using RadiowaveDesigner.Infrastructure;
+using RadiowaveDesigner.Modeling;
 using RadiowaveDesigner.Services.AreaConfiguration;
 using RadiowaveDesigner.Services.Builders;
 using RadiowaveDesigner.Services.Calculations;
@@ -12,7 +13,7 @@ public static class RadiowaveDesignerModule
     internal static void AddRadiowaveDesignerModule(this IServiceCollection services)
     {
         services.AddControllersWithViews();
-
+        services.AddInfrastructureModule();
         services.AddModelingModule();
 
         services.AddTransient<IHomeViewModelBuilder, HomeViewModelBuilder>();

@@ -1,9 +1,9 @@
 ﻿using System.Text.Json;
 using Microsoft.Extensions.Options;
+using RadiowaveDesigner.Infrastructure.Settings;
 using RadiowaveDesigner.Services.AreaConfiguration;
 using RadiowaveDesigner.Services.Configuration;
 using RadiowaveDesigner.Services.Mappings;
-using RadiowaveDesigner.Settings;
 using RadiowaveDesigner.ViewModels;
 
 namespace RadiowaveDesigner.Services.Builders;
