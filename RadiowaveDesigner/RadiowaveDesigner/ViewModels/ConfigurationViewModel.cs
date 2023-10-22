@@ -5,4 +5,6 @@ namespace RadiowaveDesigner.ViewModels;
 public class ConfigurationViewModel
 {
     public IEnumerable<BaseStationConfiguration> BaseStationConfiguration { get; set; }
+    
+    public IEnumerable<AreaConfiguration> AreaConfigurations { get; set; }
 }

@@ -10,7 +10,7 @@ internal class BaseStationRepository : IBaseStationRepository
 
     public BaseStationRepository(AppDbContext context)
     {
-        this._context = context;
+        _context = context;
     }
 
     public async Task<IEnumerable<BaseStationConfiguration?>> GetAll()
