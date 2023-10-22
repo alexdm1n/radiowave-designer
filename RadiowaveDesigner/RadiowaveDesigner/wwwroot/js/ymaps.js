@@ -80,9 +80,9 @@ function createDesignArea(configuration) {
             fillRule: "nonZero"
         },
     }, {
-        fillColor: '#00FF00',
+        fillColor: '#DE755E',
         strokeColor: '#0000FF',
-        opacity: 0.5,
+        opacity: 0.2,
         strokeWidth: 5,
         strokeStyle: 'shortdash'
     });
