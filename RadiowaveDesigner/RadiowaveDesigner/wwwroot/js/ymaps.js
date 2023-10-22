@@ -1,4 +1,5 @@
 const baseStations = document.getElementById("baseStations").value;
+const areaCoordinates = document.getElementById("areaCoordinates").value;
 
 function init() {
     var placemark,
@@ -23,12 +24,14 @@ function init() {
     
     const baseStationsArray = JSON.parse(baseStations);
     baseStationsArray.forEach((element) => {
-        console.log(element);
         const area = createCircleArea(element.Coordinates.Latitude, element.Coordinates.Longitude, element.PropagationRange);
         map.geoObjects.add(area);
         const placemark = createBaseStationPlacemark(element.Coordinates.Latitude, element.Coordinates.Longitude);
         map.geoObjects.add(placemark);
-      });
+    });
+
+    const designArea = createDesignArea(areaCoordinates);
+    map.geoObjects.add(designArea);
 }
 
 function createPlacemark(coords) {
@@ -63,6 +66,25 @@ function createCircleArea(latitude, longitude, radius) {
         strokeColor: "#07842D",
         strokeOpacity: 0.8,
         strokeWidth: 2
+    });
+}
+function createDesignArea(configuration) {
+    const configurationArray = JSON.parse(configuration);
+    const coordinates = configurationArray[0].Coordinates.map(coord => [coord.Latitude, coord.Longitude]);
+    return new ymaps.GeoObject({
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+                coordinates
+            ],
+            fillRule: "nonZero"
+        },
+    }, {
+        fillColor: '#00FF00',
+        strokeColor: '#0000FF',
+        opacity: 0.5,
+        strokeWidth: 5,
+        strokeStyle: 'shortdash'
     });
 }
 

@@ -26,7 +26,9 @@ internal class AreaRepository : IAreaRepository
 
     public async Task DeleteAll()
     {
-        var existingConfigs = await _context.AreaConfigurations.ToListAsync();
+        var existingConfigs = await _context.AreaConfigurations
+            .Include(c => c.Coordinates)
+            .ToListAsync();
         if (existingConfigs.Any())
         {
             _context.AreaConfigurations.RemoveRange(existingConfigs);
