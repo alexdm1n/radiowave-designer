@@ -1,6 +1,6 @@
 ﻿using DataAccessLayer;
 using RadiowaveDesigner.Infrastructure;
-using RadiowaveDesigner.Settings;
+using RadiowaveDesigner.Infrastructure.Settings;
 
 namespace RadiowaveDesigner;
 
