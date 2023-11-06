@@ -24,16 +24,14 @@ internal class YandexPlacesHttpClient : IYandexPlacesHttpClient
     {
         var queryParams = new Dictionary<string, string>
         {
-            { "text", $"{objectType}" },
+            { "apikey", $"{_yandexApiSettings.PlacesApiKey}" },
+            { "text", $"{objectType} {_placesApiSettings.Region}" },
             { "ll", "53.869248,27.441126" },
             { "spn", "53.884577,27.448886" },
             { "results", $"{numberOfResults}" },
             { "lang", "en_US" },
-            { "apiKey", $"{_yandexApiSettings.PlacesApiKey}" },
         };
 
-        var response =
-            await _integrationHttpClient.Get<YandexPlacesResponseMessage>(_placesApiSettings.BaseUrl, queryParams);
-        return response;
+        return await _integrationHttpClient.Get<YandexPlacesResponseMessage>(_placesApiSettings.BaseUrl, queryParams);
     }
 }

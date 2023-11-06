@@ -15,8 +15,8 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddRadiowaveDesignerModule();
         services.AddDataAccessLayerModule(Configuration);
+        services.AddRadiowaveDesignerModule();
         services.RegisterSettings<YandexApiSettings>();
     }
 

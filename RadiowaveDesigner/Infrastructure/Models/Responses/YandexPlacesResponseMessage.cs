@@ -1,6 +1,9 @@
-﻿namespace RadiowaveDesigner.Infrastructure.Models.Responses;
+﻿using System.Text.Json.Serialization;
 
-internal class YandexPlacesResponseMessage
+namespace RadiowaveDesigner.Infrastructure.Models.Responses;
+
+public class YandexPlacesResponseMessage
 {
-    // TODO:
+    [JsonPropertyName("features")]
+    public IEnumerable<PlacesResponse> Places { get; init; }
 }

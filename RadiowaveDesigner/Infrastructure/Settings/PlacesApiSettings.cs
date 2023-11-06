@@ -1,6 +1,8 @@
 ﻿namespace RadiowaveDesigner.Infrastructure.Settings;
 
-internal class PlacesApiSettings
+public class PlacesApiSettings
 {
     public Uri BaseUrl { get; init; }
+    
+    public string Region { get; init; }
 }

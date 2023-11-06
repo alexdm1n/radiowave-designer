@@ -4,6 +4,7 @@ using RadiowaveDesigner.Services.AreaConfiguration;
 using RadiowaveDesigner.Services.Builders;
 using RadiowaveDesigner.Services.Calculations;
 using RadiowaveDesigner.Services.Configuration;
+using RadiowaveDesigner.Services.Hosted;
 using RadiowaveDesigner.Services.Mappings;
 
 namespace RadiowaveDesigner;
@@ -24,5 +25,9 @@ public static class RadiowaveDesignerModule
         services.AddTransient<IPropagationRangeCalculator, PropagationRangeCalculator>();
         services.AddTransient<IBaseStationViewModelMapper, BaseStationViewModelMapper>();
         services.AddTransient<IAreaConfigViewModelMapper, AreaConfigViewModelMapper>();
+        services.AddTransient<IPlacesMapper, PlacesMapper>();
+        services.AddTransient<IPlaceMapper, PlaceMapper>();
+        services.AddTransient<ICategoryMapper, CategoryMapper>();
+        services.AddHostedService<PlacesUpdatingHostedService>();
     }
 }
