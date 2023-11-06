@@ -2,7 +2,7 @@
 
 namespace RadiowaveDesigner.Infrastructure.HttpClients.YandexPlacesApi;
 
-internal interface IYandexPlacesHttpClient
+public interface IYandexPlacesHttpClient
 {
     Task<YandexPlacesResponseMessage> GetPlaces(string objectType, int numberOfResults);
 }

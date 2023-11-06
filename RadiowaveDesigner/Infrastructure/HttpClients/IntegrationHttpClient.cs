@@ -31,7 +31,7 @@ internal class IntegrationHttpClient : IIntegrationHttpClient
     {
         foreach (var queryParam in queryParams)
         {
-            request.AddQueryParameter(queryParam.Key, queryParam.Value);
+            request.AddQueryParameter(queryParam.Key, queryParam.Value, false);
         }
     }
     

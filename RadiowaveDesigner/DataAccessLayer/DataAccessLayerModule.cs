@@ -12,9 +12,10 @@ public static class DataAccessLayerModule
     {
         var connectionString = configuration.GetConnectionString("DatabaseConnectionString");
         services
-            .AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Transient);
+            .AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Singleton);
 
         services.AddTransient<IBaseStationRepository, BaseStationRepository>();
         services.AddTransient<IAreaRepository, AreaRepository>();
+        services.AddTransient<IPlacesRepository, PlacesRepository>();
     }
 }
