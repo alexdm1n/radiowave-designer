@@ -1,4 +1,5 @@
-﻿using RadiowaveDesigner.Models;
+﻿using System.Globalization;
+using RadiowaveDesigner.Models;
 using RadiowaveDesigner.Models.Models;
 using RadiowaveDesigner.Services.Calculations;
 using RadiowaveDesigner.ViewModels;
@@ -32,7 +33,8 @@ internal class BaseStationViewModelMapper : IBaseStationViewModelMapper
             throw new ArgumentException("Invalid coordinates format. Use 'Latitude, Longitude' format.");
         }
 
-        if (double.TryParse(parts[0], out var latitude) && double.TryParse(parts[1], out var longitude))
+        if (double.TryParse(parts[0], CultureInfo.InvariantCulture,  out var latitude) &&
+            double.TryParse(parts[1], CultureInfo.InvariantCulture,  out var longitude))
         {
             return new CoordinatesModel (latitude, longitude);
         }

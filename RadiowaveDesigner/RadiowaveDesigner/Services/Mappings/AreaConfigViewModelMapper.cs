@@ -1,4 +1,5 @@
-﻿using RadiowaveDesigner.Models;
+﻿using System.Globalization;
+using RadiowaveDesigner.Models;
 using RadiowaveDesigner.Models.Models;
 using RadiowaveDesigner.ViewModels;
 
@@ -23,7 +24,8 @@ internal class AreaConfigViewModelMapper : IAreaConfigViewModelMapper
             throw new ArgumentException("Invalid coordinates format. Use 'Latitude, Longitude' format.");
         }
 
-        if (double.TryParse(parts[0], out var latitude) && double.TryParse(parts[1], out var longitude))
+        if (double.TryParse(parts[0], CultureInfo.InvariantCulture, out var latitude) &&
+            double.TryParse(parts[1], CultureInfo.InvariantCulture, out var longitude))
         {
             return new CoordinatesModelWithPosition(latitude, longitude, coordinate.Position);
         }
