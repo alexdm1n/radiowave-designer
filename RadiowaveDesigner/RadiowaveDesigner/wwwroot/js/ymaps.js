@@ -63,6 +63,7 @@ function createCircleArea(latitude, longitude, radius) {
     }, {
         draggable: false,
         fillColor: "#13FA5977",
+        fillOpacity: 0.2,
         strokeColor: "#07842D",
         strokeOpacity: 0.8,
         strokeWidth: 2

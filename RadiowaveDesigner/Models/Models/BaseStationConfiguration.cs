@@ -9,4 +9,6 @@ public class BaseStationConfiguration
     public int Height { get; set; }
     
     public string Coordinates { get; set; }
+    
+    public bool Existing { get; set; }
 }

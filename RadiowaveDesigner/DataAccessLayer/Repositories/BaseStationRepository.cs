@@ -29,6 +29,12 @@ internal class BaseStationRepository : IBaseStationRepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task UpsertList(IEnumerable<BaseStationConfiguration> configurations)
+    {
+        await _context.AddRangeAsync(configurations);
+        await _context.SaveChangesAsync();
+    }
+
     public async Task Delete(long id)
     {
         var config = await _context.BaseStationConfiguration.SingleOrDefaultAsync(c => c!.Id == id);
