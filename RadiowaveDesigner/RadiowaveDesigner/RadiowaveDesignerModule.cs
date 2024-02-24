@@ -1,6 +1,7 @@
 ﻿using RadiowaveDesigner.Infrastructure;
 using RadiowaveDesigner.Modeling;
 using RadiowaveDesigner.Services.AreaConfiguration;
+using RadiowaveDesigner.Services.BaseStationsMigration;
 using RadiowaveDesigner.Services.Builders;
 using RadiowaveDesigner.Services.Calculations;
 using RadiowaveDesigner.Services.Configuration;
@@ -28,6 +29,8 @@ public static class RadiowaveDesignerModule
         services.AddTransient<IPlacesMapper, PlacesMapper>();
         services.AddTransient<IPlaceMapper, PlaceMapper>();
         services.AddTransient<ICategoryMapper, CategoryMapper>();
+        services.AddTransient<IExistingBaseStationsService, ExistingBaseStationsService>();
+        services.AddTransient<IBaseStationDeduplicator, BaseStationDeduplicator>();
         services.AddHostedService<PlacesUpdatingHostedService>();
     }
 }

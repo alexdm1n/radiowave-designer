@@ -11,4 +11,6 @@ public interface IBaseStationRepository
     Task Delete(long id);
 
     Task<IEnumerable<BaseStationConfiguration?>> GetAll();
+
+    Task UpsertList(IEnumerable<BaseStationConfiguration> configurations);
 }
