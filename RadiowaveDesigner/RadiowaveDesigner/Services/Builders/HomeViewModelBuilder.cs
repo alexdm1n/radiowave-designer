@@ -1,7 +1,9 @@
 ﻿using System.Text.Json;
+using DataAccessLayer.Repositories;
 using Microsoft.Extensions.Options;
 using RadiowaveDesigner.Infrastructure.Settings;
 using RadiowaveDesigner.Services.AreaConfiguration;
+using RadiowaveDesigner.Services.BaseStations;
 using RadiowaveDesigner.Services.Configuration;
 using RadiowaveDesigner.Services.Mappings;
 using RadiowaveDesigner.ViewModels;
@@ -15,34 +17,44 @@ internal class HomeViewModelBuilder : IHomeViewModelBuilder
     private readonly IAreaConfigurationService _areaConfigurationService;
     private readonly IConfigurationService _configurationService;
     private readonly IAreaConfigViewModelMapper _areaConfigViewModelMapper;
+    private readonly IUserConfigurationRepository _userConfigurationRepository;
+    private readonly IBaseStationFilter _baseStationFilter;
 
     public HomeViewModelBuilder(
         IOptions<YandexApiSettings> yandexApiSettings,
         IConfigurationService configurationService,
         IBaseStationViewModelMapper baseStationViewModelMapper,
         IAreaConfigurationService areaConfigurationService,
-        IAreaConfigViewModelMapper areaConfigViewModelMapper)
+        IAreaConfigViewModelMapper areaConfigViewModelMapper,
+        IUserConfigurationRepository userConfigurationRepository,
+        IBaseStationFilter baseStationFilter)
     {
         _configurationService = configurationService;
         _baseStationViewModelMapper = baseStationViewModelMapper;
         _areaConfigurationService = areaConfigurationService;
         _areaConfigViewModelMapper = areaConfigViewModelMapper;
+        _userConfigurationRepository = userConfigurationRepository;
+        _baseStationFilter = baseStationFilter;
         _yandexApiSettings = yandexApiSettings.Value;
     }
 
     public async Task<HomeViewModel> Get()
     {
-        var configs = await _configurationService.GetAll();
-        var configViewModels = configs.Select(c => _baseStationViewModelMapper.Map(c!));
-        var areaConfig = await _areaConfigurationService.GetAll();
+        var showExistingBaseStations = await _userConfigurationRepository.ShowExistingBaseStations();
+        var baseStations = (await _configurationService.GetAll()).ToList();
+        var filteredBaseStations = _baseStationFilter.Filter(baseStations!, showExistingBaseStations);
+        var baseStationsViewModels = filteredBaseStations.Select(c => _baseStationViewModelMapper.Map(c));
+        var areaConfig = (await _areaConfigurationService.GetAll()).ToList();
         var areaViewModels = areaConfig.Any()
-            ? areaConfig.Select(ac => _areaConfigViewModelMapper.Map(ac.Coordinates)) 
+            ? areaConfig.Select(ac => _areaConfigViewModelMapper.Map(ac!.Coordinates)) 
             : null;
+
         return new()
         {
             ApiKey = _yandexApiSettings.ApiKey,
-            BaseStationViewModelsJson = JsonSerializer.Serialize(configViewModels),
-            AreaCoordinatesViewModelJson = areaViewModels != null ? JsonSerializer.Serialize(areaViewModels) : null,
+            BaseStationViewModelsJson = JsonSerializer.Serialize(baseStationsViewModels),
+            AreaCoordinatesViewModelJson = (areaViewModels != null ? JsonSerializer.Serialize(areaViewModels) : null)!,
+            ShowExistingBaseStations = showExistingBaseStations,
         };
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Device.Location;
 
-namespace RadiowaveDesigner.Services.BaseStationsMigration;
+namespace RadiowaveDesigner.Services.BaseStations.Migrations;
 
 internal class BaseStationDeduplicator : IBaseStationDeduplicator
 {
