@@ -1,4 +1,5 @@
-﻿using RadiowaveDesigner.Models.Models;
+﻿using DataAccessLayer.Repositories;
+using RadiowaveDesigner.Models.Models;
 using RadiowaveDesigner.Services.AreaConfiguration;
 using RadiowaveDesigner.Services.Configuration;
 using RadiowaveDesigner.ViewModels;
@@ -9,13 +10,16 @@ internal class ConfigurationViewModelBuilder : IConfigurationViewModelBuilder
 {
     private readonly IConfigurationService _configurationService;
     private readonly IAreaConfigurationService _areaConfigurationService;
+    private readonly IUserConfigurationRepository _userConfigurationRepository;
 
     public ConfigurationViewModelBuilder(
         IConfigurationService configurationService,
-        IAreaConfigurationService areaConfigurationService)
+        IAreaConfigurationService areaConfigurationService,
+        IUserConfigurationRepository userConfigurationRepository)
     {
         _configurationService = configurationService;
         _areaConfigurationService = areaConfigurationService;
+        _userConfigurationRepository = userConfigurationRepository;
     }
 
     public async Task<ConfigurationViewModel> Build()
@@ -26,6 +30,7 @@ internal class ConfigurationViewModelBuilder : IConfigurationViewModelBuilder
         {
            BaseStationConfiguration = baseStationConfigurations.Select(BuildBaseStationConfig),
            AreaConfigurations = areaConfigurations.Select(BuildAreaConfig),
+           ShowExistingBaseStations = await _userConfigurationRepository.ShowExistingBaseStations(),
         };
 
         return viewModel;

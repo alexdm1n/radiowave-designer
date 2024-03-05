@@ -17,5 +17,6 @@ public static class DataAccessLayerModule
         services.AddTransient<IBaseStationRepository, BaseStationRepository>();
         services.AddTransient<IAreaRepository, AreaRepository>();
         services.AddTransient<IPlacesRepository, PlacesRepository>();
+        services.AddTransient<IUserConfigurationRepository, UserConfigurationRepository>();
     }
 }

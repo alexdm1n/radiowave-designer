@@ -1,7 +1,7 @@
 ﻿using DataAccessLayer.Repositories;
 using RadiowaveDesigner.Models.Models;
 
-namespace RadiowaveDesigner.Services.BaseStationsMigration;
+namespace RadiowaveDesigner.Services.BaseStations.Migrations;
 
 internal class ExistingBaseStationsService : IExistingBaseStationsService
 {

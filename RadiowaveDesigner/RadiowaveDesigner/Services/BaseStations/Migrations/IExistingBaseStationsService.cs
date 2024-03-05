@@ -1,4 +1,4 @@
-﻿namespace RadiowaveDesigner.Services.BaseStationsMigration;
+﻿namespace RadiowaveDesigner.Services.BaseStations.Migrations;
 
 public interface IExistingBaseStationsService
 {

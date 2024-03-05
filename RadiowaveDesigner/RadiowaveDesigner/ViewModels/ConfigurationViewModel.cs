@@ -7,4 +7,6 @@ public class ConfigurationViewModel
     public IEnumerable<BaseStationConfiguration> BaseStationConfiguration { get; set; }
     
     public IEnumerable<AreaConfiguration> AreaConfigurations { get; set; }
+    
+    public bool ShowExistingBaseStations { get; set; }
 }

@@ -1,7 +1,8 @@
 ﻿using System.Data;
 using ExcelDataReader;
 using Microsoft.AspNetCore.Mvc;
-using RadiowaveDesigner.Services.BaseStationsMigration;
+using RadiowaveDesigner.Services.BaseStations;
+using RadiowaveDesigner.Services.BaseStations.Migrations;
 
 namespace RadiowaveDesigner.Controllers.Datasets;
 

@@ -1,4 +1,4 @@
-﻿namespace RadiowaveDesigner.Services.BaseStationsMigration;
+﻿namespace RadiowaveDesigner.Services.BaseStations.Migrations;
 
 internal interface IBaseStationDeduplicator
 {
