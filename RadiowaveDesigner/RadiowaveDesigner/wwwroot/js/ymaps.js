@@ -72,20 +72,18 @@ function createCircleArea(latitude, longitude, radius) {
 function createDesignArea(configuration) {
     const configurationArray = JSON.parse(configuration);
     const coordinates = configurationArray[0].Coordinates.map(coord => [coord.Latitude, coord.Longitude]);
+
     return new ymaps.GeoObject({
         geometry: {
-            type: "Polygon",
-            coordinates: [
-                coordinates
-            ],
-            fillRule: "nonZero"
-        },
+            type: 'Rectangle',
+            coordinates: coordinates
+        }
     }, {
+        draggable: false,
         fillColor: '#DE755E',
         strokeColor: '#0000FF',
         opacity: 0.2,
-        strokeWidth: 5,
-        strokeStyle: 'shortdash'
+        strokeWidth: 3
     });
 }
 
