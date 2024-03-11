@@ -25,7 +25,33 @@
 </head>
 <body>
 <h1 class="text-center">Configuration</h1>
-
+<h2 class="text-center" style="margin-top: 30px">Frequency Config</h2>
+<div class="container mt-5">
+    <div class="col-md-6 offset-md-3">
+        <h3 class="text-center mb-3">Existing base stations frequency</h3>
+        <form method="post" asp-controller="Configuration" asp-action="UpdateFrequency">
+            <div class="form-group">
+                <label for="existingFreqUpdate">Frequency (MHz):</label>
+                <input type="number" class="form-control" id="existingFreqUpdate" name="frequency"/>
+                <input type="hidden" name="existing" value="true" />
+               <div class="text-center" style="margin-top: 10px">
+                   <input type="submit" value="Submit" class="btn btn-primary" />
+               </div>
+            </div>
+        </form>
+         <h3 class="text-center mb-3">Manually created base stations frequency</h3>
+        <form method="post" asp-controller="Configuration" asp-action="UpdateFrequency">
+            <div class="form-group">
+                <label for="manualFreqUpdate">Frequency (MHz):</label>
+                <input type="number" class="form-control" id="manualFreqUpdate" name="frequency"/>
+                <input type="hidden" name="existing" value="false" />
+                <div class="text-center" style="margin-top: 10px">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <h2 class="text-center" style="margin-top: 30px">Base Station Config</h2>
 <div class="container mt-5">
     <div class="row">

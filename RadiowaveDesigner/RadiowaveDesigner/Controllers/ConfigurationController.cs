@@ -45,4 +45,10 @@ public class ConfigurationController : Controller
         await _areaConfigurationService.Upsert(coordinatesString);
         return RedirectToAction("Configuration", "Configuration");
     }
+
+    public async Task<IActionResult> UpdateFrequency(int frequency, bool existing)
+    {
+        await _configurationService.UpdateFrequency(frequency, existing);
+        return RedirectToAction("Configuration", "Configuration");
+    }
 }

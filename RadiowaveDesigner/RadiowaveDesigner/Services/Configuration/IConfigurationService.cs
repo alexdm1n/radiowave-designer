@@ -11,4 +11,6 @@ public interface IConfigurationService
     Task<IEnumerable<BaseStationConfiguration?>> GetAll();
 
     Task Delete(long id);
+
+    Task UpdateFrequency(int frequency, bool existing);
 }
