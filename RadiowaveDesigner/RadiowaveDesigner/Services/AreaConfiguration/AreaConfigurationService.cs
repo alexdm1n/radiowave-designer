@@ -27,6 +27,11 @@ internal class AreaConfigurationService : IAreaConfigurationService
     private Models.Models.AreaConfiguration BuildAreaConfig(string coordinatesString)
     {
         var coordinates = coordinatesString.Split(';');
+        if (coordinates.Length != 2)
+        {
+            throw new ArgumentException("Use 2 coordinates in order to setup Area Configuration");
+        }
+
         var areaConfig = new Models.Models.AreaConfiguration();
         int position = 1;
         var coords = new List<Coordinate>();
