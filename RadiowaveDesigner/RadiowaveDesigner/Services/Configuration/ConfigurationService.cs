@@ -32,4 +32,10 @@ internal class ConfigurationService : IConfigurationService
     {
         return await _baseStationRepository.Get(id);
     }
+
+    public async Task UpdateFrequency(int frequency, bool existing)
+    {
+        await _baseStationRepository.ChangeFrequency(frequency, existing);
+    }
+    
 }

@@ -41,4 +41,19 @@ internal class BaseStationRepository : IBaseStationRepository
         _context.BaseStationConfiguration.Remove(config);
         await _context.SaveChangesAsync();
     }
+
+    public async Task ChangeFrequency(int frequency, bool existing)
+    {
+        var stationsToUpdate = await _context.BaseStationConfiguration
+            .Where(c => c.Existing == existing)
+            .ToListAsync();
+
+        foreach (var station in stationsToUpdate)
+        {
+            station.FrequencyInMHz = frequency;
+            _context.Entry(station).State = EntityState.Modified;
+        }
+
+        await _context.SaveChangesAsync();
+    }
 }

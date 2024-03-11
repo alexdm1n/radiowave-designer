@@ -13,4 +13,6 @@ public interface IBaseStationRepository
     Task<IEnumerable<BaseStationConfiguration?>> GetAll();
 
     Task UpsertList(IEnumerable<BaseStationConfiguration> configurations);
+
+    Task ChangeFrequency(int frequency, bool existing);
 }
