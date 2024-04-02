@@ -11,4 +11,6 @@ public class BaseStationConfiguration
     public string Coordinates { get; set; }
     
     public bool Existing { get; set; }
+    
+    public bool Automated { get; set; }
 }

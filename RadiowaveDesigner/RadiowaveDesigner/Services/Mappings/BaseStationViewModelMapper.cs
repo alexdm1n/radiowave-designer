@@ -21,10 +21,12 @@ internal class BaseStationViewModelMapper : IBaseStationViewModelMapper
         {
             Coordinates = config.Coordinates == null ? null : SplitToModel(config.Coordinates),
             PropagationRange = _propagationRangeCalculator.Calculate(config),
+            Existing = config.Existing,
+            Automated = config.Automated,
         };
     }
 
-    private static CoordinatesModel? SplitToModel(string coordinates)
+    private static CoordinatesModel SplitToModel(string coordinates)
     {
         var parts = coordinates.Split(',');
 

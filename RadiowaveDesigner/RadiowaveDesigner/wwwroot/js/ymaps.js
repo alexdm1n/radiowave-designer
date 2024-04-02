@@ -24,7 +24,12 @@ function init() {
     
     const baseStationsArray = JSON.parse(baseStations);
     baseStationsArray.forEach((element) => {
-        const area = createCircleArea(element.Coordinates.Latitude, element.Coordinates.Longitude, element.PropagationRange);
+        const area = createCircleArea(
+          element.Coordinates.Latitude,
+          element.Coordinates.Longitude,
+          element.PropagationRange,
+          element.Existing,
+          element.Automated);
         map.geoObjects.add(area);
         const placemark = createBaseStationPlacemark(element.Coordinates.Latitude, element.Coordinates.Longitude);
         map.geoObjects.add(placemark);
@@ -54,7 +59,17 @@ function createBaseStationPlacemark(latitude, longitude) {
     });
 }
 
-function createCircleArea(latitude, longitude, radius) {
+function createCircleArea(latitude, longitude, radius, existing, automated) {
+    let fillColor = "#13FA5977";
+    let strokeColor = "#07842D";
+    if (existing) {
+        fillColor = "#8080ff";
+        strokeColor = "#0000ff";
+    }
+    if (automated) {
+        fillColor = "#b84dff"
+        strokeColor = "#9900ff";
+    }
     return new ymaps.Circle([
         [latitude, longitude],
         radius
@@ -62,9 +77,9 @@ function createCircleArea(latitude, longitude, radius) {
         hintContent: `Propagation range - ${radius} m`
     }, {
         draggable: false,
-        fillColor: "#13FA5977",
+        fillColor: fillColor,
         fillOpacity: 0.2,
-        strokeColor: "#07842D",
+        strokeColor: strokeColor,
         strokeOpacity: 0.8,
         strokeWidth: 2
     });
