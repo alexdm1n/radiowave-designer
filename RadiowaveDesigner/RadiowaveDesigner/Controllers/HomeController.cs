@@ -27,4 +27,9 @@ public class HomeController : Controller
         await _userConfigurationRepository.ChangeShowExistingBaseStationsStatus();
         return RedirectToAction("Index", "Home");
     }
+
+    public async Task<IActionResult> ProcessAutomatedPlacement()
+    {
+        return RedirectToAction("Index", "Home");
+    }
 }

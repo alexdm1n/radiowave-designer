@@ -85,8 +85,8 @@ function createCircleArea(latitude, longitude, radius, existing, automated) {
     });
 }
 function createDesignArea(configuration) {
-    const configurationArray = JSON.parse(configuration);
-    const coordinates = configurationArray[0].Coordinates.map(coord => [coord.Latitude, coord.Longitude]);
+    const configurationJson = JSON.parse(configuration);
+    const coordinates = configurationJson.Coordinates.map(coord => [coord.Latitude, coord.Longitude]);
 
     return new ymaps.GeoObject({
         geometry: {

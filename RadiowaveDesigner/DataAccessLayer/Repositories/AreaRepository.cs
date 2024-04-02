@@ -13,9 +13,11 @@ internal class AreaRepository : IAreaRepository
         _context = context;
     }
     
-    public async Task<IEnumerable<AreaConfiguration?>> GetAll()
+    public async Task<AreaConfiguration?> Get()
     {
-        return await _context.AreaConfigurations.Include(c => c.Coordinates).ToListAsync();
+        return await _context.AreaConfigurations
+            .Include(c => c.Coordinates)
+            .SingleOrDefaultAsync();
     }
 
     public async Task Upsert(AreaConfiguration configurations)

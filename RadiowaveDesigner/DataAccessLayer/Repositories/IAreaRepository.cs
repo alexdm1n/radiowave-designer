@@ -4,7 +4,7 @@ namespace DataAccessLayer.Repositories;
 
 public interface IAreaRepository
 {
-    Task<IEnumerable<AreaConfiguration?>> GetAll();
+    Task<AreaConfiguration?> Get();
 
     Task Upsert(AreaConfiguration configurations);
 

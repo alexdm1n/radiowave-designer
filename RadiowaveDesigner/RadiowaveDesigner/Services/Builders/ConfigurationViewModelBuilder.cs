@@ -25,11 +25,11 @@ internal class ConfigurationViewModelBuilder : IConfigurationViewModelBuilder
     public async Task<ConfigurationViewModel> Build()
     {
         var baseStationConfigurations = await _configurationService.GetAll();
-        var areaConfigurations = await _areaConfigurationService.GetAll();
+        var areaConfiguration = await _areaConfigurationService.Get();
         var viewModel = new ConfigurationViewModel
         {
            BaseStationConfiguration = baseStationConfigurations.Select(BuildBaseStationConfig),
-           AreaConfigurations = areaConfigurations.Select(BuildAreaConfig),
+           AreaConfiguration = BuildAreaConfig(areaConfiguration),
            ShowExistingBaseStations = await _userConfigurationRepository.ShowExistingBaseStations(),
         };
 

@@ -12,9 +12,9 @@ internal class AreaConfigurationService : IAreaConfigurationService
         _areaRepository = areaRepository;
     }
 
-    public async Task<IEnumerable<Models.Models.AreaConfiguration?>> GetAll()
+    public async Task<Models.Models.AreaConfiguration?> Get()
     {
-        return await _areaRepository.GetAll();
+        return await _areaRepository.Get();
     }
 
     public async Task Upsert(string coordinatesString)
