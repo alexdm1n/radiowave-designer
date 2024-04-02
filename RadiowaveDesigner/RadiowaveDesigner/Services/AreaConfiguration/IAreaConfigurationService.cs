@@ -2,7 +2,7 @@
 
 public interface IAreaConfigurationService
 {
-    Task<IEnumerable<Models.Models.AreaConfiguration?>> GetAll();
+    Task<Models.Models.AreaConfiguration?> Get();
 
     Task Upsert(string coordinatesString);
 }

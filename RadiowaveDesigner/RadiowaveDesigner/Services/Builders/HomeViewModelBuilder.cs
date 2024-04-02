@@ -44,16 +44,16 @@ internal class HomeViewModelBuilder : IHomeViewModelBuilder
         var baseStations = (await _configurationService.GetAll()).ToList();
         var filteredBaseStations = _baseStationFilter.Filter(baseStations!, showExistingBaseStations);
         var baseStationsViewModels = filteredBaseStations.Select(c => _baseStationViewModelMapper.Map(c));
-        var areaConfig = (await _areaConfigurationService.GetAll()).ToList();
-        var areaViewModels = areaConfig.Any()
-            ? areaConfig.Select(ac => _areaConfigViewModelMapper.Map(ac!.Coordinates)) 
+        var areaConfig = await _areaConfigurationService.Get();
+        var areaViewModel = areaConfig is not null
+            ? _areaConfigViewModelMapper.Map(areaConfig.Coordinates) 
             : null;
 
         return new()
         {
             ApiKey = _yandexApiSettings.ApiKey,
             BaseStationViewModelsJson = JsonSerializer.Serialize(baseStationsViewModels),
-            AreaCoordinatesViewModelJson = (areaViewModels != null ? JsonSerializer.Serialize(areaViewModels) : null)!,
+            AreaCoordinatesViewModelJson = (areaViewModel != null ? JsonSerializer.Serialize(areaViewModel) : null)!,
             ShowExistingBaseStations = showExistingBaseStations,
         };
     }
