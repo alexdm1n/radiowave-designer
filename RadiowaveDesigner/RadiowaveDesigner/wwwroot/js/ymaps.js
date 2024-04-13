@@ -97,8 +97,9 @@ function createDesignArea(configuration) {
         draggable: false,
         fillColor: '#DE755E',
         strokeColor: '#0000FF',
-        opacity: 0.2,
-        strokeWidth: 3
+        fillOpacity: 0.1,
+        strokeOpacity: 0.5,
+        strokeWidth: 4
     });
 }
 

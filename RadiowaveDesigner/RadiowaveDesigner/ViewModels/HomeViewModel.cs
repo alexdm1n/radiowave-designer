@@ -9,4 +9,8 @@ public class HomeViewModel
     public string AreaCoordinatesViewModelJson { get; set; }
     
     public bool ShowExistingBaseStations { get; set; }
+    
+    public bool HasAutomatedStations { get; set; }
+    
+    public bool HasAreaConfig { get; set; }
 }
