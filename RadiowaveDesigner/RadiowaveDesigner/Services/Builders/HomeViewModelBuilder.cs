@@ -55,6 +55,8 @@ internal class HomeViewModelBuilder : IHomeViewModelBuilder
             BaseStationViewModelsJson = JsonSerializer.Serialize(baseStationsViewModels),
             AreaCoordinatesViewModelJson = (areaViewModel != null ? JsonSerializer.Serialize(areaViewModel) : null)!,
             ShowExistingBaseStations = showExistingBaseStations,
+            HasAutomatedStations = baseStations.Any(bs => bs!.Automated),
+            HasAreaConfig = areaViewModel is not null,
         };
     }
 }

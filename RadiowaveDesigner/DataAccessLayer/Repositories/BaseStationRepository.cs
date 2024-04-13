@@ -42,6 +42,12 @@ internal class BaseStationRepository : IBaseStationRepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task DeleteList(IReadOnlyList<BaseStationConfiguration> baseStations)
+    {
+        _context.RemoveRange(baseStations);
+        await _context.SaveChangesAsync();
+    }
+
     public async Task ChangeFrequency(int frequency, bool existing)
     {
         var stationsToUpdate = await _context.BaseStationConfiguration

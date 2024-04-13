@@ -19,5 +19,24 @@
         <input type="hidden" id="baseStations" value="@Model.BaseStationViewModelsJson"/>
         <input type="hidden" id="areaCoordinates" value="@Model.AreaCoordinatesViewModelJson"/>
         <script src="js/ymaps.js" type="text/javascript"></script>
+        @if (Model.HasAreaConfig)
+        {
+            <div class="container mt-5">
+                <div class="row mt-5">
+                    <div class="col-md-6 offset-md-3">
+                        <h3 class="text-center mb-3">Automated Placement</h3>
+                        <div class="text-center">
+                            <a type="submit" value="AddAreaConfig" class="btn btn-primary" asp-controller="Home" asp-action="ProcessAutomatedPlacement"/>Process Automation<a/>
+                        </div>
+                        @if (Model.HasAutomatedStations)
+                        {
+                            <div class="text-center" style="margin-top: 10px">
+                                <a type="submit" value="AddAreaConfig" class="btn btn-danger" asp-controller="Home" asp-action="RestoreAutomatedPlacement"/>Restore Automation<a/>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>   
+        }
     </body>
 </html>
