@@ -1,4 +1,5 @@
 ﻿using System.Device.Location;
+using System.Globalization;
 
 namespace RadiowaveDesigner.Services.BaseStations.Migrations;
 
@@ -48,6 +49,6 @@ internal class BaseStationDeduplicator : IBaseStationDeduplicator
     private static double GetCoordinateValue(object coordinate)
     {
         var stringCoordinate = coordinate.ToString();
-        return Convert.ToDouble(stringCoordinate!.Remove(stringCoordinate.Length - 1, 1));
+        return Convert.ToDouble(stringCoordinate!.Remove(stringCoordinate.Length - 1, 1), CultureInfo.InvariantCulture);
     }
 }

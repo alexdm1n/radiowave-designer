@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Repositories;
+﻿using System.Globalization;
+using DataAccessLayer.Repositories;
 using RadiowaveDesigner.Models.Models;
 
 namespace RadiowaveDesigner.Services.BaseStations.Migrations;
@@ -40,7 +41,7 @@ internal class ExistingBaseStationsService : IExistingBaseStationsService
 
     private static int GetHeightValue(object height)
     {
-        var datasetHeight = (int) Math.Round(Convert.ToDouble(height));
+        var datasetHeight = (int) Math.Round(Convert.ToDouble(height, CultureInfo.InvariantCulture));
         return datasetHeight < 20 ? 20 : datasetHeight;
     }
 }
