@@ -2,5 +2,5 @@
 
 internal static class DeduplicationConstants
 {
-    public static int DefaultPrecision = 300;
+    public static int DefaultPrecision = 250;
 }
