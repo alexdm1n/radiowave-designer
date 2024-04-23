@@ -22,13 +22,16 @@ internal class PrioritizedPlacesBaseStationCreator : IPrioritizedPlacesBaseStati
         foreach (var place in prioritizedPlaces)
         {
             var coordinates = ParseCoordinates(place.Coordinates);
+            var latitude = coordinates.Latitude.ToString(CultureInfo.InvariantCulture);
+            var longitude = coordinates.Longitude.ToString(CultureInfo.InvariantCulture);
+
             var baseStationConfig = new BaseStationConfiguration
             {
                 Automated = true,
                 Existing = false,
                 Height = AutomatedBaseStationsConstants.Height,
                 FrequencyInMHz = AutomatedBaseStationsConstants.FrequencyInMHz,
-                Coordinates = $"{coordinates.Latitude},{coordinates.Longitude}",
+                Coordinates = $"{latitude},{longitude}",
             };
 
             await _baseStationRepository.Create(baseStationConfig);

@@ -74,7 +74,10 @@ internal class BaseStationsAutomatedCreator : IBaseStationsAutomatedCreator
 
             while (lon <= maxLongitude + degreesLongitudeOffset)
             {
-                string coordinates = $"{lat},{lon}";
+                var latitude = lat.ToString(CultureInfo.InvariantCulture);
+                var longitude = lon.ToString(CultureInfo.InvariantCulture);
+
+                string coordinates = $"{latitude},{longitude}";
                 calculatedCoords.Add(coordinates);
 
                 lon += degreesLongitude * 1.6;
